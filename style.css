@@ -1,0 +1,40 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  font-size: xx-large;
+}
+
+#form {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+.form-wrap {
+  border: solid black 1px;
+  border-radius: 1rem;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: azure;
+}
+
+#submit {
+  font-size: xx-large;
+  margin-top: 2rem;
+  padding: 1rem;
+  border-radius: 1rem;
+  background-color: lightgoldenrodyellow;
+}
+
+input {
+  border-radius: 0.5rem;
+}
+
+.hidden {
+  display: none;
+}
