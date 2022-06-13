@@ -14,6 +14,9 @@ class FormValidation {
         const isValidEmail = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         return isValidEmail.test(element.value);
     }
+    static country(country) {
+        return country.value != "-- Please select one --";
+    }
     static zipcode(element) {
         const isValidZip = /(^\d{5}$)|(^\d{5}-\d{4}$)/;
         return isValidZip.test(element.value);
@@ -39,6 +42,22 @@ email.addEventListener("input", () => {
             email.classList.add("invalid");
         }
         submitCheck();
+    }
+});
+country.addEventListener("change", () => {
+    if (country) {
+        if (FormValidation.country(country)) {
+            if (country.classList.contains("invalid")) {
+                country.classList.remove("invalid");
+            }
+            country.classList.add("valid");
+        }
+        else {
+            if (country.classList.contains("valid")) {
+                country.classList.remove("valid");
+            }
+            country.classList.add("invalid");
+        }
     }
 });
 zipcode.addEventListener("input", () => {
@@ -116,9 +135,13 @@ confirmPass.addEventListener("input", () => {
 submitButton.disabled = true;
 function submitCheck() {
     if (FormValidation.email(email) &&
+        FormValidation.country(country) &&
         FormValidation.zipcode(zipcode) &&
         FormValidation.password(password, confirmPass)) {
         submitButton.disabled = false;
+    }
+    else {
+        submitButton.disabled = true;
     }
 }
 submitButton.addEventListener("click", () => {

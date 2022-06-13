@@ -19,6 +19,10 @@ class FormValidation {
     return isValidEmail.test(element.value);
   }
 
+  static country(country: HTMLInputElement) {
+    return country.value != "-- Please select one --";
+  }
+
   static zipcode(element: HTMLInputElement) {
     const isValidZip = /(^\d{5}$)|(^\d{5}-\d{4}$)/;
     return isValidZip.test(element.value);
@@ -45,6 +49,22 @@ email!.addEventListener("input", () => {
       email.classList.add("invalid");
     }
     submitCheck();
+  }
+});
+
+country.addEventListener("change", () => {
+  if (country) {
+    if (FormValidation.country(country)) {
+      if (country.classList.contains("invalid")) {
+        country.classList.remove("invalid");
+      }
+      country.classList.add("valid");
+    } else {
+      if (country.classList.contains("valid")) {
+        country.classList.remove("valid");
+      }
+      country.classList.add("invalid");
+    }
   }
 });
 
@@ -123,10 +143,13 @@ submitButton.disabled = true;
 function submitCheck() {
   if (
     FormValidation.email(email) &&
+    FormValidation.country(country) &&
     FormValidation.zipcode(zipcode) &&
     FormValidation.password(password, confirmPass)
   ) {
     submitButton.disabled = false;
+  } else {
+    submitButton.disabled = true;
   }
 }
 
