@@ -38,3 +38,11 @@ input {
 .hidden {
   display: none;
 }
+
+.typed:valid {
+  outline: green;
+}
+
+.typed:invalid {
+  outline: red;
+}
