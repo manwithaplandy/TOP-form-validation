@@ -26,23 +26,29 @@
 #submit {
   font-size: xx-large;
   margin-top: 2rem;
+  margin-bottom: 1rem;
   padding: 1rem;
   border-radius: 1rem;
   background-color: lightgoldenrodyellow;
 }
 
-input {
+input,
+select {
   border-radius: 0.5rem;
+  background-color: white;
+  border: solid black 1.5px;
 }
 
 .hidden {
   display: none;
 }
 
-.typed:valid {
-  outline: green;
+.valid {
+  outline: medium solid rgb(5, 227, 5);
+  border-color: grey;
 }
 
-.typed:invalid {
-  outline: red;
+.invalid {
+  outline: medium solid red;
+  border-color: grey;
 }

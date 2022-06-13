@@ -4,15 +4,15 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
     <link rel="stylesheet" href="style.css" />
     <title>Form validation</title>
   </head>
   <body>
     <div class="main">
-      <div class="form-wrap">
+      <div class="form-wrap" id="form-wrap">
         <p>Please enter the information below</p>
-        <form action="" id="form">
+        <form action="" id="form" novalidate>
           <label for="email">Email:</label>
           <input type="email" name="email" id="email" required />
           <label for="country">Country:</label>
@@ -33,7 +33,7 @@
           <label for="confirm">Confirm Password:</label>
           <input type="password" name="confirm" id="confirm" required />
         </form>
-        <button type="submit" id="submit" form="form">Submit</button>
+        <button type="button" id="submit" form="form">Submit</button>
         <p class="highfive hidden">High Five! You did it all correctly!</p>
       </div>
     </div>
